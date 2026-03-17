@@ -5,6 +5,7 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.options.AriaRole;
 
 import java.time.Duration;
 
@@ -17,7 +18,15 @@ public class InteractWithInputs {
         );
         Page page = browser.newPage();
         page.navigate("https://www.testmuai.com/selenium-playground/simple-form-demo/");
-        //Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(10));
+
+        page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Please enter your Message")).fill("Hey Tester");
+        Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(5));
+
+        page.locator("id=showInput").click();
+        String message = page.locator("#message").textContent();
+        System.out.println(message);
+
+        playwright.close();
     }
 
 }
