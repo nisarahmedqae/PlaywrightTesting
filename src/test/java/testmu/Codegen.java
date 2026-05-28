@@ -24,6 +24,8 @@ public class Codegen {
         Page page = context.newPage();
         page.navigate("https://www.testmuai.com/selenium-playground/input-form-demo/");
 
+        // mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="codegen demo.playwright.dev/todomvc"
+
         Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Name")).fill("Nisar");
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Email*")).fill("abc@xyz.com");
