@@ -1,4 +1,4 @@
-package sdet;
+package nahmed.dropdown;
 
 import com.microsoft.playwright.*;
 
@@ -11,23 +11,18 @@ public class BootstrapDropDown {
         BrowserContext context = browser.newContext();
         Page page = context.newPage();
 
-        page.navigate("https://www.hdfcbank.com/");
+        page.navigate("https://www.hdfc.bank.in/");
 
         // Product Type
-        page.locator("text=Select Product Type").click();
-        Locator productTypes = page.locator("//ul[@class='dropdown1 dropdown-menu']/li");
+        page.locator("(//div[@class='sBtn-text'])[1]").click();
+        Locator productTypes = page.locator("//ul[@class='options']//li");
         System.out.println(productTypes.count());
+
+        productTypes.allInnerTexts().forEach(System.out::println);
 
         // Select "Accounts" from the dropdown
         productTypes.filter(new Locator.FilterOptions().setHasText("Accounts")).click();
-
-        // Product
-        page.locator("text=Select Product").click();
-        Locator products = page.locator("//ul[@class='dropdown2 dropdown-menu']/li");
-        System.out.println(products.count());
-
-        // Select "Savings Accounts" from the dropdown
-        products.filter(new Locator.FilterOptions().setHasText("Savings Accounts")).click();
+        page.waitForTimeout(6000);
 
         // Clean up resources manually
         page.close();

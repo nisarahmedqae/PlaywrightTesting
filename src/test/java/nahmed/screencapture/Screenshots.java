@@ -1,11 +1,9 @@
-package testmu;
+package nahmed.screencapture;
 
-import com.google.common.util.concurrent.Uninterruptibles;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.Page.ScreenshotOptions;
 
 import java.nio.file.Paths;
-import java.time.Duration;
 
 public class Screenshots {
 

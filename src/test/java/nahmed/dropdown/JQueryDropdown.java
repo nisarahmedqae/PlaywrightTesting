@@ -1,10 +1,9 @@
-package testmu;
+package nahmed.dropdown;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import com.microsoft.playwright.*;
 
 import java.time.Duration;
-import java.util.List;
 
 public class JQueryDropdown {
 

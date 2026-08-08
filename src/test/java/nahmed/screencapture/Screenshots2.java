@@ -1,4 +1,4 @@
-package testmu;
+package nahmed.screencapture;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.Page.ScreenshotOptions;
