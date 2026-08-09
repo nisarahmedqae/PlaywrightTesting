@@ -1,4 +1,4 @@
-package sdet;
+package nahmed.browser;
 
 import com.microsoft.playwright.*;
 

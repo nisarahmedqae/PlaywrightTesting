@@ -1,4 +1,4 @@
-package section10;
+package nahmed.actions;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
@@ -6,7 +6,7 @@ import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
-public class FramesDemo {
+public class Dropable {
 
     public static void main(String[] args) {
         try (Playwright playwright = Playwright.create()) {
@@ -22,7 +22,7 @@ public class FramesDemo {
             // Count frames on main page
             System.out.println(page.locator("iframe").count());
 
-            // Target iframe using FrameLocator (no need to manually switch back to default content)
+            // Target iframe using FrameLocator
             FrameLocator frame = page.frameLocator(".demo-frame");
 
             // Perform drag and drop inside the frame

@@ -1,4 +1,4 @@
-package sdet;
+package nahmed.actions;
 
 import com.microsoft.playwright.*;
 

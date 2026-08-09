@@ -1,4 +1,4 @@
-package nahmed;
+package nahmed.tabs;
 
 import com.microsoft.playwright.*;
 

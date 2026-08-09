@@ -1,4 +1,4 @@
-package sdet;
+package nahmed.tabs;
 
 import com.microsoft.playwright.*;
 

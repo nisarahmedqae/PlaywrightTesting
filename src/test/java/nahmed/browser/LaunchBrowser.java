@@ -1,4 +1,4 @@
-package nahmed;
+package nahmed.browser;
 
 import com.microsoft.playwright.*;
 

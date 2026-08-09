@@ -1,4 +1,4 @@
-package section10;
+package nahmed.actions;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
@@ -7,7 +7,7 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.options.MouseButton;
 
-public class ActionsClassDemo {
+public class MouseActions {
 
     public static void main(String[] args) {
         try (Playwright playwright = Playwright.create()) {
@@ -29,6 +29,7 @@ public class ActionsClassDemo {
 
             // Context click (Right-click) on element
             nameInput.click(new Locator.ClickOptions().setButton(MouseButton.RIGHT));
+            page.waitForTimeout(4000);
 
             browser.close();
         }

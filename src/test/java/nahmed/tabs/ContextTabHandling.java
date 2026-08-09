@@ -1,11 +1,11 @@
-package testmu;
+package nahmed.tabs;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.KeyboardModifier;
 
 import java.util.Arrays;
 
-public class TabHandling {
+public class ContextTabHandling {
 
     public static void main(String[] args) {
         Playwright playwright = Playwright.create();
