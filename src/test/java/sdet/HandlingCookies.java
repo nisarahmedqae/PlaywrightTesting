@@ -9,7 +9,7 @@ import java.util.List;
 public class HandlingCookies {
 
     public static void main(String[] args) {
-        // Initialize Playwright and Launch Browser
+        // Initialize Playwright and Browser instances
         Playwright playwright = Playwright.create();
         Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
 

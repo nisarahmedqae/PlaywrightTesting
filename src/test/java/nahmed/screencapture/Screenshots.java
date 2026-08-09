@@ -1,32 +1,41 @@
 package nahmed.screencapture;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.Page.ScreenshotOptions;
-
+import com.microsoft.playwright.options.ScreenshotType;
 import java.nio.file.Paths;
 
 public class Screenshots {
 
     public static void main(String[] args) {
+        // Initialize Playwright and Browser instances
         Playwright playwright = Playwright.create();
-        Browser browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(true) //cause by default it opens in headless
-        );
-        Page page = browser.newPage(); // New Page means new tab
+        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        BrowserContext context = browser.newContext();
+        Page page = context.newPage();
+
         page.navigate("https://letcode.in/test");
 
-        // screenshots
-        ScreenshotOptions screenshotOptions = new ScreenshotOptions();
-        page.screenshot(screenshotOptions.setPath(Paths.get("./screenshots/basic_sc.png")));
+        // Basic screenshot
+        page.screenshot(new Page.ScreenshotOptions()
+                .setPath(Paths.get("./screenshots/basic_sc.png")));
 
-        // full page screenshot
-        page.screenshot(screenshotOptions.setFullPage(true).setPath(Paths.get("./screenshots/fullPage_sc.png")));
+        // Full page screenshot
+        page.screenshot(new Page.ScreenshotOptions()
+                .setFullPage(true)
+                .setPath(Paths.get("./screenshots/fullPage_sc.png")));
 
-        // locator screenshot
-        Locator shadow = page.locator("//p[text()=' Shadow ']/../..");
-        shadow.screenshot(new Locator.ScreenshotOptions().setPath(Paths.get("./screenshots/locator_sc.png")));
+        // Locator screenshot (PNG)
+        Locator shadow = page.locator("//a[@href='/shadow']/..");
+        shadow.screenshot(new Locator.ScreenshotOptions()
+                .setPath(Paths.get("./screenshots/locator_sc.png")));
+
+        // Locator screenshot (JPEG with quality)
+        shadow.screenshot(new Locator.ScreenshotOptions()
+                .setPath(Paths.get("./screenshots/locator_sc.jpeg"))
+                .setType(ScreenshotType.JPEG)
+                .setQuality(80)
+        );
 
         playwright.close();
     }
-
 }

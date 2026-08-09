@@ -10,11 +10,12 @@ import java.util.Arrays;
 public class Screenshots2 {
 
     public static void main(String[] args) {
+        // Initialize Playwright and Browser instances
         Playwright playwright = Playwright.create();
-        Browser browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(true) //cause by default it opens in headless
-        );
-        Page page = browser.newPage(); // New Page means new tab
+        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        BrowserContext context = browser.newContext();
+        Page page = context.newPage();
+
         page.navigate("https://www.testmuai.com/selenium-playground/input-form-demo/");
 
         // screenshots

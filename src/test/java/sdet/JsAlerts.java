@@ -5,7 +5,7 @@ import com.microsoft.playwright.*;
 public class JsAlerts {
 
     public static void main(String[] args) {
-        // Initialize Playwright and Launch Browser
+        // Initialize Playwright and Browser instances
         Playwright playwright = Playwright.create();
         Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
         BrowserContext context = browser.newContext();
@@ -48,6 +48,12 @@ public class JsAlerts {
         page.locator("//button[text()='Click for JS Prompt']").click();
         System.out.println(page.locator("#result").innerText());
 
+
+        //page.onceDialog()
+        // Unregisters automatically after handling one dialog.
+
+        //page.onDialog()
+        // Persists for the entire duration of the Page session.
 
         // Clean up resources manually
         page.close();
