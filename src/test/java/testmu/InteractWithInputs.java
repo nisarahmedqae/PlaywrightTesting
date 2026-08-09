@@ -11,11 +11,12 @@ import java.time.Duration;
 public class InteractWithInputs {
 
     public static void main(String[] args) {
+        // Initialize Playwright and Browser instances
         Playwright playwright = Playwright.create();
-        Browser browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(false) //cause by default it opens in headless
-        );
-        Page page = browser.newPage(); // New Page means new tab
+        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        BrowserContext context = browser.newContext();
+        Page page = context.newPage();
+
         page.navigate("https://www.testmuai.com/selenium-playground/simple-form-demo/");
 
         // fill text
@@ -26,15 +27,15 @@ public class InteractWithInputs {
         String message = page.locator("#message").textContent();
         System.out.println(message);
 
-        // get input values
+        // What is inside the text box
         page.navigate("https://letcode.in/edit");
         String inputValue = page.locator("#getMe").inputValue();
         System.out.println(inputValue);
 
-        String placeHolderValue = page.locator("#fullName").getAttribute("placeholder");
+        Locator fullNameLocator = page.locator("#fullName");
+        String placeHolderValue = fullNameLocator.getAttribute("placeholder");
         System.out.println(placeHolderValue);
 
-        Locator fullNameLocator = page.locator("#fullName");
         assertThat(fullNameLocator).hasAttribute("placeholder", "Enter first & last name");
 
         page.locator("id=clearMe").clear();

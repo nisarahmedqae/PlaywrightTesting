@@ -1,18 +1,17 @@
 package testmu;
 
-import com.google.common.util.concurrent.Uninterruptibles;
 import com.microsoft.playwright.*;
 
 import java.util.List;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 public class LearnFrames {
 
     public static void main(String[] args) {
+        // Initialize Playwright and Browser instances
         Playwright playwright = Playwright.create();
-        BrowserType browserType = playwright.chromium();
-        Page page = browserType.launch(new BrowserType.LaunchOptions().setHeadless(false)).newPage();
+        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        BrowserContext context = browser.newContext();
+        Page page = context.newPage();
 
         page.navigate("https://letcode.in/frame");
         List<Frame> frames = page.frames();
@@ -22,8 +21,9 @@ public class LearnFrames {
         FrameLocator firstFrame = page.frameLocator("#firstFr");
         firstFrame.getByPlaceholder("Enter name").fill("Nisar");
 
-        FrameLocator nestedFrame = firstFrame.frameLocator("iframe.has-background-white");
+        FrameLocator nestedFrame = firstFrame.frameLocator("//iframe[@title='Inner Frame']");
         nestedFrame.getByPlaceholder("Enter email").fill("abc@xyz.com");
+        page.waitForTimeout(4000);
 
         playwright.close();
     }

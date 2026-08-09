@@ -2,21 +2,19 @@ package testmu;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.SelectOption;
 
 import java.time.Duration;
 import java.util.List;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 public class SelectMultiples {
 
     public static void main(String[] args) {
+        // Initialize Playwright and Browser instances
         Playwright playwright = Playwright.create();
-        Browser browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(false) //cause by default it opens in headless
-        );
-        Page page = browser.newPage(); // New Page means new tab
+        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        BrowserContext context = browser.newContext();
+        Page page = context.newPage();
+
         page.navigate("https://letcode.in/selectable");
 
         // multiple options
