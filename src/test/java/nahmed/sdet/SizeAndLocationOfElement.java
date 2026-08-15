@@ -1,4 +1,4 @@
-package sdet;
+package nahmed.sdet;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.BoundingBox;

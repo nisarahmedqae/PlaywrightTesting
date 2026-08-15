@@ -1,4 +1,4 @@
-package testmu;
+package nahmed.testmu;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import com.microsoft.playwright.*;
