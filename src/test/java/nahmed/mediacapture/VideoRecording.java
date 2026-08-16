@@ -1,4 +1,4 @@
-package nahmed.testmu;
+package nahmed.mediacapture;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.Browser.NewContextOptions;
@@ -21,6 +21,9 @@ public class VideoRecording {
 
         // mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="codegen demo.playwright.dev/todomvc"
 
+        // Cleanup - context.close() is REQUIRED to finalize/save the video file to disk
+        context.close();
+        browser.close();
         playwright.close();
     }
 }

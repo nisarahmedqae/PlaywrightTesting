@@ -19,6 +19,11 @@ public class WaitForSelectorExample {
 
         page.click("#submit-button");
 
+        // Wait for a loading spinner to appear
+        page.waitForSelector("#loading-spinner",
+                new Page.WaitForSelectorOptions().setState(WaitForSelectorState.VISIBLE));
+        System.out.println("Loading spinner is hidden");
+
         // Wait for a loading spinner to disappear
         page.waitForSelector("#loading-spinner",
                 new Page.WaitForSelectorOptions().setState(WaitForSelectorState.HIDDEN));

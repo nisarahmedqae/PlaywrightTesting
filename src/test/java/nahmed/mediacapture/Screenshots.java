@@ -1,4 +1,4 @@
-package nahmed.screencapture;
+package nahmed.mediacapture;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.ScreenshotType;
