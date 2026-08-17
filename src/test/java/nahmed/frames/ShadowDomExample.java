@@ -57,37 +57,6 @@ public class ShadowDomExample {
         System.out.println("Value via chained locator: " + inputViaHost.inputValue());
 
         // 3. CLOSED shadow DOM - Playwright CANNOT pierce this; must use evaluate() as a fallback
-        /*
-        page.setContent("""
-            <html>
-                <body>
-                    <custom-widget id="closed-widget"></custom-widget>
-                    <script>
-                        class CustomWidget extends HTMLElement {
-                            connectedCallback() {
-                                // mode: 'closed' -> hides shadowRoot entirely, even from JS by default
-                                const shadow = this.attachShadow({ mode: 'closed' });
-                                shadow.innerHTML = '<span class="secret-text">Closed content</span>';
-                                this._shadowRoot = shadow; // dev exposes it manually for internal use
-                            }
-                        }
-                        customElements.define('custom-widget', CustomWidget);
-                    </script>
-                </body>
-            </html>
-        """);
-         */
-
-        // This will fail / return nothing - closed shadow roots are NOT exposed to page.locator()
-        int count = page.locator(".secret-text").count();
-        System.out.println("Locator count for closed shadow content: " + count); // likely 0
-
-        // Fallback: only works if the app itself exposed the shadow root on the JS object (like _shadowRoot above)
-        // This is app-specific and not guaranteed to work - closed shadow DOM is intentionally inaccessible
-        Object closedText = page.evaluate(
-                "() => document.querySelector('#closed-widget')._shadowRoot?.querySelector('.secret-text')?.textContent"
-        );
-        System.out.println("Closed shadow text (if exposed by app): " + closedText);
 
         // Cleanup
         context.close();

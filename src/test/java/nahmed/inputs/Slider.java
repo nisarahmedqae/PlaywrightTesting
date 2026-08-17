@@ -1,4 +1,4 @@
-package nahmed.actions;
+package nahmed.inputs;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.BoundingBox;

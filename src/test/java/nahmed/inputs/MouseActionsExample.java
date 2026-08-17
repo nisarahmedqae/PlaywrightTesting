@@ -67,8 +67,6 @@ public class MouseActionsExample {
         // that need real intermediate mousemove events, not just start+end)
         page.mouse().move(50, 50);
         page.mouse().down();
-        page.mouse().move(50, 150, new Mouse.MoveOptions().setSteps(10)); // steps = intermediate movements
-        page.mouse().move(300, 150, new Mouse.MoveOptions().setSteps(10));
         page.mouse().up();
         System.out.println("Performed manual drag using mouse down/move/up");
 

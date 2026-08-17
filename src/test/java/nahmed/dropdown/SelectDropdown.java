@@ -22,15 +22,15 @@ public class SelectDropdown {
 
         Locator selectFruits = page.locator("select#fruits");
 
-        // select by value
-        selectFruits.selectOption("2");
+        // Select by value attribute
+        selectFruits.selectOption(new SelectOption().setValue("2"));
         Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
         Locator selectedOption = page.locator("//p[@class='text-sm font-medium']");
         assertThat(selectedOption).containsText("Orange");
         System.out.println(selectedOption.textContent());
 
-        // Select by Label / Visible Text
-        selectFruits.selectOption("Mango");
+        // Select by visible label (text)
+        selectFruits.selectOption(new SelectOption().setLabel("Mango"));
         Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
         assertThat(selectedOption).containsText("Mango");
         System.out.println(selectedOption.textContent());
