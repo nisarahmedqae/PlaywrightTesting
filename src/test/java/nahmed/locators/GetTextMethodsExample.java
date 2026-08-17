@@ -60,6 +60,10 @@ public class GetTextMethodsExample {
             System.out.println("Item " + i + ": " + listItems.nth(i).textContent());
         }
 
+        // First and Last Locators
+        System.out.println("First Item: " + listItems.first().textContent());
+        System.out.println("Last Item: " + listItems.last().textContent());
+
         // Cleanup
         context.close();
         browser.close();
