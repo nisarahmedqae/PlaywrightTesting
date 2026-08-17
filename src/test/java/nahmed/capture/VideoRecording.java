@@ -1,4 +1,4 @@
-package nahmed.mediacapture;
+package nahmed.capture;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.Browser.NewContextOptions;
@@ -12,7 +12,7 @@ public class VideoRecording {
         Playwright playwright = Playwright.create();
         Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
         BrowserContext context = browser.newContext(
-                new NewContextOptions().setRecordVideoDir(Paths.get("./videos"))
+                new NewContextOptions().setRecordVideoDir(Paths.get("./capture/videos"))
                         .setRecordVideoSize(new RecordVideoSize(1280, 720))
         );
         Page page = context.newPage();

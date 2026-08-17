@@ -4,6 +4,11 @@ import com.microsoft.playwright.*;
 
 public class TabHandling {
 
+    /*
+    page.waitForPopup() is tied to the page instance.
+    It only fires for popups that are causally linked to that specific page
+    (e.g., a link on mainPage opening a new tab).
+     */
     public static void main(String[] args) {
         Playwright playwright = Playwright.create();
         Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));

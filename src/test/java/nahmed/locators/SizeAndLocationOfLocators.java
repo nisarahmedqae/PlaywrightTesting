@@ -1,9 +1,9 @@
-package nahmed.sdet;
+package nahmed.locators;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.BoundingBox;
 
-public class SizeAndLocationOfElement {
+public class SizeAndLocationOfLocators {
 
     public static void main(String[] args) {
         // Initialize Playwright and Browser instances

@@ -1,4 +1,4 @@
-package nahmed.mediacapture;
+package nahmed.capture;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.ScreenshotCaret;
@@ -23,7 +23,7 @@ public class Screenshots2 {
         password.scrollIntoViewIfNeeded();
 
         page.screenshot(new Page.ScreenshotOptions()
-                .setPath(Paths.get("./screenshots/masked_locator_sc.png"))
+                .setPath(Paths.get("./capture/screenshots/masked_locator_sc.png"))
                 .setMask(Arrays.asList(password))
         );
 
@@ -31,12 +31,12 @@ public class Screenshots2 {
         password.click();
         page.screenshot(new Page.ScreenshotOptions()
                 .setCaret(ScreenshotCaret.HIDE)
-                .setPath(Paths.get("./screenshots/caret_hide.png"))
+                .setPath(Paths.get("./capture/screenshots/caret_hide.png"))
         );
 
         page.screenshot(new Page.ScreenshotOptions()
                 .setCaret(ScreenshotCaret.INITIAL)
-                .setPath(Paths.get("./screenshots/caret_initial.png"))
+                .setPath(Paths.get("./capture/screenshots/caret_initial.png"))
         );
 
         playwright.close();

@@ -1,4 +1,4 @@
-package nahmed.mediacapture;
+package nahmed.capture;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.ScreenshotType;
@@ -17,21 +17,21 @@ public class Screenshots {
 
         // Basic screenshot
         page.screenshot(new Page.ScreenshotOptions()
-                .setPath(Paths.get("./screenshots/basic_sc.png")));
+                .setPath(Paths.get("./capture/screenshots/basic_sc.png")));
 
         // Full page screenshot
         page.screenshot(new Page.ScreenshotOptions()
                 .setFullPage(true)
-                .setPath(Paths.get("./screenshots/fullPage_sc.png")));
+                .setPath(Paths.get("./capture/screenshots/fullPage_sc.png")));
 
         // Locator screenshot (PNG)
         Locator shadow = page.locator("//a[@href='/shadow']/..");
         shadow.screenshot(new Locator.ScreenshotOptions()
-                .setPath(Paths.get("./screenshots/locator_sc.png")));
+                .setPath(Paths.get("./capture/screenshots/locator_sc.png")));
 
         // Locator screenshot (JPEG with quality)
         shadow.screenshot(new Locator.ScreenshotOptions()
-                .setPath(Paths.get("./screenshots/locator_sc.jpeg"))
+                .setPath(Paths.get("./capture/screenshots/locator_sc.jpeg"))
                 .setType(ScreenshotType.JPEG)
                 .setQuality(80)
         );

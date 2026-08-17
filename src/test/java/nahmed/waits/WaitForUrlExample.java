@@ -29,9 +29,6 @@ public class WaitForUrlExample {
         // Wildcard glob pattern (most common)
         page.waitForURL("**/dashboard/**");
 
-        // Using a regex Pattern for more control
-        page.waitForURL(Pattern.compile(".*\\/dashboard\\?user=\\d+"));
-
         // With a custom timeout
         page.waitForURL("**/dashboard",
                 new Page.WaitForURLOptions().setTimeout(15000));

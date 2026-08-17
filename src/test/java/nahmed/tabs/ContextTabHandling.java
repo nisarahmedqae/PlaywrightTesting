@@ -7,6 +7,11 @@ import java.util.Arrays;
 
 public class ContextTabHandling {
 
+    /*
+    context.waitForPage() is tied to the browser context (i.e., the whole "browser session").
+    It catches a new page regardless of which page within that context triggered it —
+    could be mainPage, could be a popup that itself opens another popup, etc.
+     */
     public static void main(String[] args) {
         Playwright playwright = Playwright.create();
         Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
@@ -26,10 +31,6 @@ public class ContextTabHandling {
 
         tab.waitForLoadState();
         System.out.println("New Tab Title: " + tab.title());
-
-        //Use page.waitForPopup() when a specific action inside the current page directly triggers a new window/tab (such as clicking a target="_blank" link or executing window.open()).
-
-        //Use context.waitForPage() when the new tab is triggered at the browser context level without a direct parent page event
 
         playwright.close();
     }

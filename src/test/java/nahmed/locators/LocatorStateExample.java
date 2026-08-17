@@ -1,9 +1,8 @@
-package nahmed.others;
+package nahmed.locators;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.WaitForSelectorState;
 
-public class ElementStateExample {
+public class LocatorStateExample {
 
     /*
     Playwright locators expose several "state check" methods that return a

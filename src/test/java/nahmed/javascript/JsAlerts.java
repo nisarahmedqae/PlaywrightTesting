@@ -1,4 +1,4 @@
-package nahmed.sdet;
+package nahmed.javascript;
 
 import com.microsoft.playwright.*;
 

@@ -1,7 +1,6 @@
-package nahmed.others;
+package nahmed.inputs;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.Position;
 
 public class ScrollingExample {
 

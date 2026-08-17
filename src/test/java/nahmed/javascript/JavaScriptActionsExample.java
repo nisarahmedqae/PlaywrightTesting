@@ -1,4 +1,4 @@
-package nahmed.others;
+package nahmed.javascript;
 
 import com.microsoft.playwright.*;
 

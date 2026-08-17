@@ -55,9 +55,9 @@ public class GetTextMethodsExample {
         System.out.println("allInnerTexts: " + allInnerTexts);
 
         // Manual loop alternative (useful if you need index-based logic)
-        List<Locator> items = listItems.all();
-        for (int i = 0; i < items.size(); i++) {
-            System.out.println("Item " + i + ": " + items.get(i).textContent());
+        int itemsCount = listItems.count();
+        for (int i = 0; i < itemsCount; i++) {
+            System.out.println("Item " + i + ": " + listItems.nth(i).textContent());
         }
 
         // Cleanup

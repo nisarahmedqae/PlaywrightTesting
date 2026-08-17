@@ -3,7 +3,7 @@ package nahmed.waits;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.WaitForSelectorState;
 
-public class WaitForSelectorExample {
+public class WaitForLocatorExample {
 
     public static void main(String[] args) {
         Playwright playwright = Playwright.create();
@@ -14,29 +14,29 @@ public class WaitForSelectorExample {
         page.navigate("https://example.com");
 
         // Wait for an element to be visible (default state)
-        page.waitForSelector("#submit-button");
+        Locator submitButton = page.locator("#submit-button");
+        submitButton.waitFor();
         System.out.println("Submit button is visible");
 
-        page.click("#submit-button");
+        submitButton.click();
 
         // Wait for a loading spinner to appear
-        page.waitForSelector("#loading-spinner",
-                new Page.WaitForSelectorOptions().setState(WaitForSelectorState.VISIBLE));
-        System.out.println("Loading spinner is hidden");
+        Locator spinner = page.locator("#loading-spinner");
+        spinner.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
+        System.out.println("Loading spinner is visible");
 
         // Wait for a loading spinner to disappear
-        page.waitForSelector("#loading-spinner",
-                new Page.WaitForSelectorOptions().setState(WaitForSelectorState.HIDDEN));
+        spinner.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.HIDDEN));
         System.out.println("Loading spinner is hidden");
 
         // Wait for an element to be attached to the DOM (may not be visible yet)
-        page.waitForSelector("#result-container",
-                new Page.WaitForSelectorOptions().setState(WaitForSelectorState.ATTACHED));
+        Locator resultContainer = page.locator("#result-container");
+        resultContainer.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.ATTACHED));
         System.out.println("Result container is attached to DOM");
 
         // Wait for an element to be removed from the DOM
-        page.waitForSelector("#temp-message",
-                new Page.WaitForSelectorOptions().setState(WaitForSelectorState.DETACHED));
+        Locator tempMessage = page.locator("#temp-message");
+        tempMessage.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.DETACHED));
         System.out.println("Temp message is detached from DOM");
 
         // Set globally for all actions
