@@ -1,4 +1,4 @@
-package nahmed.texts;
+package nahmed.locators;
 
 import com.microsoft.playwright.*;
 import java.util.List;

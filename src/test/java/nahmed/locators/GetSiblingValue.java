@@ -1,4 +1,4 @@
-package nahmed.sublocators;
+package nahmed.locators;
 
 import com.microsoft.playwright.*;
 
