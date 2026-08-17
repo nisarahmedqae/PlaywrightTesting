@@ -18,8 +18,6 @@ public class BootstrapDropDown {
         Locator productTypes = page.locator("//ul[@class='options']//li");
         System.out.println(productTypes.count());
 
-        productTypes.allInnerTexts().forEach(System.out::println);
-
         // Select "Accounts" from the dropdown
         productTypes.filter(new Locator.FilterOptions().setHasText("Accounts")).click();
         page.waitForTimeout(6000);

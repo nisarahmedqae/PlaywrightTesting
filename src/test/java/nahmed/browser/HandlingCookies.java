@@ -32,8 +32,8 @@ public class HandlingCookies {
         // Playwright requires you to define the name, value, and URL/domain when adding a cookie
         Cookie cookieObj = new Cookie("myCookie", "thisIsCookie");
         cookieObj.setUrl("https://demo.nopcommerce.com/");
-
         context.addCookies(Collections.singletonList(cookieObj));
+
         cookies = context.cookies();
         System.out.println("Size of cookies after adding: " + cookies.size());
 

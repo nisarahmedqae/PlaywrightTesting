@@ -55,14 +55,6 @@ public class LocatorStateExample {
         boolean editable = page.locator("#username").isEditable();
         System.out.println("Is username field editable: " + editable);
 
-        // 7. count() - number of matching elements (0 if none found) - useful to check existence
-        int errorCount = page.locator(".error-text").count();
-        System.out.println("Number of error messages on page: " + errorCount);
-
-        if (errorCount > 0) {
-            System.out.println("Form has validation errors");
-        }
-
         // Cleanup
         context.close();
         browser.close();

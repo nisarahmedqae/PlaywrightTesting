@@ -24,20 +24,20 @@ public class SelectDropdown {
 
         // Select by value attribute
         selectFruits.selectOption(new SelectOption().setValue("2"));
-        Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
+        page.waitForTimeout(3000);
         Locator selectedOption = page.locator("//p[@class='text-sm font-medium']");
         assertThat(selectedOption).containsText("Orange");
         System.out.println(selectedOption.textContent());
 
         // Select by visible label (text)
         selectFruits.selectOption(new SelectOption().setLabel("Mango"));
-        Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
+        page.waitForTimeout(3000);
         assertThat(selectedOption).containsText("Mango");
         System.out.println(selectedOption.textContent());
 
         // select by index
         selectFruits.selectOption(new SelectOption().setIndex(1));
-        Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(3));
+        page.waitForTimeout(3000);
         assertThat(selectedOption).containsText("Apple");
         System.out.println(selectedOption.textContent());
 

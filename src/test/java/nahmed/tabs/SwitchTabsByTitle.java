@@ -24,12 +24,21 @@ public class SwitchTabsByTitle {
         Page page4 = context.newPage();
         page4.navigate("https://www.google.com");
 
-        // 1. Get the matching page scope from context based on expected title fragment
-        Page targetPage = getPageByTitle(context, "LetCode");
+        // 1. Search for the page whose title contains the expected fragment
+        String expectedTitleFragment = "LetCode";
+        Page targetPage = null;
 
-        // 2. Outside the loop: interact with the page scope and print its title/content
+        List<Page> pages = context.pages();
+        for (Page page : pages) {
+            if (page.title().contains(expectedTitleFragment)) {
+                page.bringToFront();
+                targetPage = page;
+                break; // stop once we find the match
+            }
+        }
+
+        // 2. Interact with the matched page scope
         if (targetPage != null) {
-            // Print page title outside the loop
             System.out.println("Returned Page Title: " + targetPage.title());
             System.out.println("Returned Page URL: " + targetPage.url());
         } else {
@@ -37,19 +46,5 @@ public class SwitchTabsByTitle {
         }
 
         playwright.close();
-    }
-
-    /**
-     * Helper method to search for a page by title fragment and return the Page scope.
-     */
-    public static Page getPageByTitle(BrowserContext context, String expectedTitleFragment) {
-        List<Page> pages = context.pages();
-        for (Page page : pages) {
-            if (page.title().contains(expectedTitleFragment)) {
-                page.bringToFront();
-                return page; // Return the matching Page scope directly
-            }
-        }
-        return null; // Return null if no match is found
     }
 }

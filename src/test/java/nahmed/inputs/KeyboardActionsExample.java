@@ -57,7 +57,7 @@ public class KeyboardActionsExample {
 
         // 6. Arrow keys - navigate dropdown/autocomplete suggestions, sliders, custom widgets
         page.keyboard().press("ArrowDown");
-        page.keyboard().press("ArrowDown");
+        page.keyboard().press("ArrowUp");
         page.keyboard().press("Enter"); // select highlighted suggestion
         System.out.println("Navigated dropdown suggestions with arrow keys and selected one");
 

@@ -14,7 +14,7 @@ public class JavaScriptActionsExample {
 
         // 1. Scroll an element into view with custom behavior (smooth/center)
         // Playwright's scrollIntoViewIfNeeded() only does instant/nearest - use JS for smooth/center control
-        page.locator("#footer").evaluate("el => el.scrollIntoView({ behavior: 'smooth', block: 'center' })");
+        page.locator("#footer").evaluate("el => el.scrollIntoView({ block: 'center' })");
 
         // 2. Force-click an element that's covered/intercepted by an overlay
         // Native click() fails with "element intercepts pointer events" - JS click bypasses that check
